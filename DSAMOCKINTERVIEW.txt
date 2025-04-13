@@ -1,0 +1,732 @@
+Problem Statement
+You are given a 2D matrix where:
+
+Each row is sorted in ascending order.
+Each column is sorted in ascending order.
+Your task is to efficiently determine whether a given target value exists in the matrix.
+
+
+
+Problem Statement
+You are given two integer arrays gas and cost, both of equal length n.
+
+You have a car with an unlimited gas tank.
+gas[i] represents the amount of gas available at station i.
+cost[i] represents the amount of gas needed to travel from station i to the next station (i+1).
+You begin the journey with an empty tank at one of the gas stations.
+
+Your task is to find the starting gas station's index if you can travel around the circuit once in a clockwise direction.
+If it is not possible, return -1.
+
+It is guaranteed that if a solution exists, it is unique.
+
+Constraints
+1 ≤ n ≤ 10⁵
+0 ≤ gas[i], cost[i] ≤ 10⁴
+Input Format
+Two integer arrays:
+
+gas[i]: The amount of gas at station i.
+cost[i]: The gas needed to travel from station i to (i+1).
+Output Format
+Return an integer representing the starting gas station's index if possible, otherwise return -1.
+
+Example Input
+gas = [1,2,3,4,5]
+cost = [3,4,5,1,2]
+Example Output
+3
+Example Explanation
+We start at station 3 (index 3) and proceed as follows:
+
+Fill up at station 3 → Tank = 0 + 4 = 4
+Travel to station 4 → Tank = 4 - 1 + 5 = 8
+Travel to station 0 → Tank = 8 - 2 + 1 = 7
+Travel to station 1 → Tank = 7 - 3 + 2 = 6
+Travel to station 2 → Tank = 6 - 4 + 3 = 5
+Travel to station 3 → Tank = 5 - 5 = 0 (Enough to return)
+Since we complete the circuit, the answer is 3.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Problem Statement
+You are given a 2D binary grid representing a map with 1s (land) and 0s (water). Your task is to implement a function that returns the number of islands.
+
+An island is formed by connecting adjacent lands horizontally or vertically, surrounded by water. Assume all four edges of the grid are surrounded by water.
+
+Constraints
+The number of rows and columns in the grid is between 1 and 300.
+Each cell in the grid is either 0 (water) or 1 (land).
+Input Format
+A 2D integer array grid, where grid[i][j] is 1 for land and 0 for water.
+
+Output Format
+Return an integer representing the number of islands in the grid.
+
+Example Input
+Input 1:
+grid = [
+    [1, 1, 0, 0, 0],
+    [0, 1, 0, 0, 0],
+    [1, 0, 0, 1, 1],
+    [0, 0, 0, 0, 0],
+    [1, 0, 1, 0, 0]
+]
+Input 2:
+grid = [
+    [1, 1, 0, 0, 0],
+    [1, 1, 0, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 0, 1, 1]
+]
+Example Output
+Output 1:
+5
+Output 2:
+3
+Example Explanation
+Explanation for Input 1:
+There are 5 distinct islands in the given grid:
+
+[
+    [1, 1, 0, 0, 0],
+    [0, 1, 0, 0, 0],
+    [1, 0, 0, 1, 1],
+    [0, 0, 0, 0, 0],
+    [1, 0, 1, 0, 0]
+]
+Explanation for Input 2:
+There are 3 distinct islands in the given grid:
+
+[
+    [1, 1, 0, 0, 0],
+    [1, 1, 0, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 0, 1, 1]
+]
+
+
+----
+Problem Statement
+Imagine you have an array of strings, and your goal is to find the longest common prefix among them. The longest common prefix is the string shared by all strings in the array at the beginning.
+
+Constraints
+1 ≤ number of strings ≤ 200
+0 ≤ length of each string ≤ 200
+Input Format
+The first and only argument is a string array str[].
+Output Format
+Return the longest common prefix as a string.
+Example Input 1
+str = ["flower", "flow", "flight"]
+Example Output 1
+"fl"
+Explanation
+The longest common prefix between "flower", "flow", and "flight" is "fl".
+
+
+
+
+
+
+
+
+
+
+
+
+
+private final MicrosoftTranslateApi microsoftTranslateApi;
+
+    public MicrosoftTranslateAdapter() {
+        this.microsoftTranslateApi = new MicrosoftTranslateApi();
+    }
+
+    @Override
+    public String translate(String text, String sourceLanguage, String targetLanguage) {
+        return microsoftTranslateApi.translate(text, sourceLanguage, targetLanguage);
+    }
+
+    @Override
+    public List<String> getSupportedLanguages() {
+        return microsoftTranslateApi.getSupportedLanguages();
+    }
+package com.assignment.question.external;
+
+import java.util.List;
+
+import static com.assignment.question.external.ApiUtils.logGoogleGetSupportedLanguages;
+import static com.assignment.question.external.ApiUtils.logGoogleTranslate;
+
+public class GoogleTranslateApi {
+
+    public String convert(GoogleTranslationRequest request) {
+        // Implementation for translating text using Google Translate API
+        logGoogleTranslate();
+        return "Translated text";
+    }
+
+    public List<String> getLanguages() {
+        // Implementation for fetching supported languages from Google Translate
+        logGoogleGetSupportedLanguages();
+        return List.of("hindi", "marathi", "kannada");
+    }
+}
+
+package com.assignment.question.external;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
+public class GoogleTranslationRequest {
+    private String text;
+    private String sourceLanguage;
+    private String targetLanguage;
+    private Double confidenceThreshold;
+}
+package com.assignment.question.external;
+
+import java.util.List;
+
+import static com.assignment.question.external.ApiUtils.logMicrosoftGetSupportedLanguages;
+import static com.assignment.question.external.ApiUtils.logMicrosoftTranslate;
+
+public class MicrosoftTranslateApi {
+    public String translate(String text, String sourceLanguage, String targetLanguage) {
+        // Implementation for translating text using Microsoft Translator API
+        logMicrosoftTranslate();
+        return "Translated text";
+    }
+
+    // Method to retrieve the list of supported languages from Microsoft Translator
+    public List<String> getSupportedLanguages() {
+        // Implementation for fetching supported languages from Microsoft Translator
+        logMicrosoftGetSupportedLanguages();
+        return List.of("hindi", "marathi", "kannada");
+    }
+}
+package com.assignment.question;
+
+import java.util.List;
+
+import com.assignment.question.external.GoogleTranslateApi;
+import com.assignment.question.external.GoogleTranslationRequest;
+
+public class GoogleTranslateAdapter implements TranslationProviderAdapter {
+    private final GoogleTranslateApi googleTranslateApi;
+
+    public GoogleTranslateAdapter() {
+        this.googleTranslateApi = new GoogleTranslateApi();
+    }
+
+    @Override
+    public String translate(String text, String sourceLanguage, String targetLanguage) {
+        GoogleTranslationRequest request = new GoogleTranslationRequest(text, sourceLanguage, targetLanguage, 0.8);
+        return googleTranslateApi.convert(request);
+    }
+
+    @Override
+    public List<String> getSupportedLanguages() {
+        return googleTranslateApi.getLanguages();
+    }
+}
+
+package com.assignment.question;
+
+import java.util.List;
+
+import com.assignment.question.external.MicrosoftTranslateApi;
+
+public class MicrosoftTranslateAdapter implements TranslationProviderAdapter{
+    private final MicrosoftTranslateApi microsoftTranslateApi;
+
+    public MicrosoftTranslateAdapter() {
+        this.microsoftTranslateApi = new MicrosoftTranslateApi();
+    }
+
+    @Override
+    public String translate(String text, String sourceLanguage, String targetLanguage) {
+        return microsoftTranslateApi.translate(text, sourceLanguage, targetLanguage);
+    }
+
+    @Override
+    public List<String> getSupportedLanguages() {
+        return microsoftTranslateApi.getSupportedLanguages();
+    }
+}
+
+package com.assignment.question;
+
+public interface TranslationManager {
+
+    void printSupportedLanguages(String string);
+
+    char[] translate(String string, String string2, String string3, String string4);
+
+}
+package com.assignment.question;
+
+import java.util.List;
+
+public interface TranslationProviderAdapter {
+    String translate(String text, String sourceLanguage, String targetLanguage);
+    List<String> getSupportedLanguages();
+}
+package com.assignment.question;
+
+public interface TranslationProviderAdapterprivate {
+
+}
+package com.assignment.question;
+
+import lombok.NoArgsConstructor;
+
+// DO NOT REMOVE THE NO-ARG CONSTRUCTOR ANNOTATION
+@NoArgsConstructor
+public class TranslationRequest {
+}
+import java.util.HashMap;
+import java.util.Map;
+
+import com.assignment.question.GoogleTranslateAdapter;
+import com.assignment.question.MicrosoftTranslateAdapter;
+import com.assignment.question.TranslationProviderAdapter;
+
+public class TranslationManager {
+    private final Map<String, TranslationProviderAdapter> adapters = new HashMap<>();
+
+    public TranslationManager() { // ✅ Ensure a public constructor exists
+        adapters.put("google", new GoogleTranslateAdapter());
+        adapters.put("microsoft", new MicrosoftTranslateAdapter());
+    }
+
+    public String translate(String text, String sourceLanguage, String targetLanguage, String provider) {
+        TranslationProviderAdapter adapter = adapters.get(provider.toLowerCase());
+        if (adapter == null) {
+            throw new RuntimeException("Invalid provider: " + provider);
+        }
+        return adapter.translate(text, sourceLanguage, targetLanguage);
+    }
+
+    public void printSupportedLanguages(String provider) {
+        TranslationProviderAdapter adapter = adapters.get(provider.toLowerCase());
+        if (adapter == null) {
+            throw new RuntimeException("Invalid provider: " + provider);
+        }
+        System.out.println("Supported languages for " + provider + ": " + adapter.getSupportedLanguages());
+    }
+}
+
+package com.assignment.question;
+
+import com.assignment.question.external.ApiUtils;
+import com.assignment.question.external.GoogleTranslateApi;
+import com.assignment.question.external.MicrosoftTranslateApi;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.reflections.Reflections;
+import org.reflections.scanners.SubTypesScanner;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+@ExtendWith(MockitoExtension.class)
+public class TranslationAdapterTest {
+
+    @Test
+    public void testMethods() {
+
+        Class<?> adapterClass = TranslationProviderAdapter.class;
+        Method[] methods = adapterClass.getDeclaredMethods();
+
+        assertTrue(methods.length >= 2,
+                "If the adapter class is implemented correctly, there should be at least 2 methods.");
+
+        long getSupportedLanguagesMethod = Arrays.stream(methods)
+                .filter(method -> method.getParameterCount() == 0
+                        && method.getReturnType() == List.class)
+                .count();
+
+        long translateMethod = Arrays.stream(methods)
+                .filter(method -> method.getParameterCount() == 1
+                        && method.getReturnType() == String.class
+                        && method.getParameterTypes()[0] == TranslationRequest.class)
+                .count();
+
+        assertEquals(1, getSupportedLanguagesMethod,
+                "If the adapter class is implemented correctly, there should be 1 method for getting the list of supported languages which accepts no parameters and has a return type of List<String>.");
+        assertEquals(1, translateMethod,
+                "If the adapter class is implemented correctly, there should be 1 method for translating text which accepts a TranslationRequest parameter and has a return type of String.");
+    }
+
+    @Test
+    public void testImplementations() {
+
+        Reflections reflections = new Reflections(TranslationAdapterTest.class.getPackageName(),
+                new SubTypesScanner(false));
+        Set<Class<? extends TranslationProviderAdapter>> adapterImplClasses = reflections
+                .getSubTypesOf(TranslationProviderAdapter.class);
+
+        assertTrue(adapterImplClasses.size() >= 2,
+                "If the adapter class is implemented correctly, there should be at least 2 implementations of the adapter interface.");
+
+        for (Class<? extends TranslationProviderAdapter> clazz : adapterImplClasses) {
+            assertTrue(TranslationProviderAdapter.class.isAssignableFrom(clazz),
+                    "Class " + clazz.getSimpleName() + " should implement TranslationProviderAdapter interface.");
+
+            boolean hasApiReference = false;
+
+            Field[] fields = clazz.getDeclaredFields();
+            for (Field field : fields) {
+                if ((field.getType() == GoogleTranslateApi.class || field.getType() == MicrosoftTranslateApi.class)) {
+                    hasApiReference = true;
+                    break;
+                }
+            }
+
+            assertTrue(hasApiReference,
+                    "If the adapter class is implemented correctly, it should have a field referring to the external APIs.");
+        }
+    }
+
+    @Test
+    public void testTranslationRequest() {
+        Field[] fields = TranslationRequest.class.getDeclaredFields();
+        List<Pair<Class<?>, Integer>> expectedFields = List.of(
+                Pair.of(String.class, 3),
+                Pair.of(Double.class, 1)
+        );
+
+        assertEquals(4, fields.length,
+                "If the TranslationRequest class is implemented correctly, it should have 4 fields.");
+        int stringCount = Stream.of(fields)
+                .filter(field -> field.getType() == String.class)
+                .mapToInt(field -> 1)
+                .sum();
+        assertEquals(3, stringCount,
+                "If the TranslationRequest class is implemented correctly, it should have 3 fields of type String.");
+        
+        int doubleCount = Stream.of(fields)
+                .filter(field -> field.getType() == Double.class)
+                .mapToInt(field -> 1)
+                .sum();
+        assertEquals(1, doubleCount,
+                "If the TranslationRequest class is implemented correctly, it should have 1 field of type Integer.");
+    }
+
+    @Test
+    public void testGetSupportedLanguages() throws Exception {
+        Reflections reflections = new Reflections(TranslationProviderAdapter.class.getPackageName(),
+                new SubTypesScanner(false));
+        Set<Class<? extends TranslationProviderAdapter>> adapterClasses = reflections
+                .getSubTypesOf(TranslationProviderAdapter.class);
+
+        List<Pair<TranslationProviderAdapter, Method>> translateMethods = new ArrayList<>();
+
+        for (Class<? extends TranslationProviderAdapter> adapterClass : adapterClasses) {
+            Constructor<? extends TranslationProviderAdapter> constructor = adapterClass.getDeclaredConstructor();
+            TranslationProviderAdapter adapter = constructor.newInstance();
+
+            Method[] methods = adapterClass.getDeclaredMethods();
+            for (Method method : methods) {
+                if (method.getReturnType() == List.class && method.getParameterTypes().length == 0) {
+                    translateMethods.add(new Pair<>(adapter, method));
+                }
+            }
+        }
+
+        try (MockedStatic<ApiUtils> mockApiUtils = Mockito.mockStatic(ApiUtils.class)) {
+            for (Pair<TranslationProviderAdapter, Method> method : translateMethods) {
+                List<String> languages = (List<String>) method.getRight().invoke(method.getLeft());
+                List<String> expectedLanguages = List.of("hindi", "marathi", "kannada");
+                assertEquals(expectedLanguages, languages, "If the adapter class is implemented correctly, the method should return the list of supported languages.");
+            }
+
+            mockApiUtils.verify(ApiUtils::logMicrosoftGetSupportedLanguages);
+            mockApiUtils.verify(ApiUtils::logGoogleGetSupportedLanguages);
+
+        }
+    }
+
+    @Test
+    public void testTranslate() throws Exception {
+        Reflections reflections = new Reflections(TranslationProviderAdapter.class.getPackageName(),
+                new SubTypesScanner(false));
+        Set<Class<? extends TranslationProviderAdapter>> adapterClasses = reflections
+                .getSubTypesOf(TranslationProviderAdapter.class);
+
+        List<Pair<TranslationProviderAdapter, Method>> translateMethods = new ArrayList<>();
+
+        for (Class<? extends TranslationProviderAdapter> adapterClass : adapterClasses) {
+            Constructor<? extends TranslationProviderAdapter> constructor = adapterClass.getDeclaredConstructor();
+            TranslationProviderAdapter adapter = constructor.newInstance();
+
+            Method[] methods = adapterClass.getDeclaredMethods();
+            for (Method method : methods) {
+                if (method.getReturnType() == String.class
+                        && method.getParameterTypes().length == 1
+                        && method.getParameterTypes()[0] == TranslationRequest.class) {
+                    translateMethods.add(new Pair<>(adapter, method));
+                }
+            }
+        }
+        try (MockedStatic<ApiUtils> mockApiUtils = Mockito.mockStatic(ApiUtils.class)) {
+            for (Pair<TranslationProviderAdapter, Method> method : translateMethods) {
+                method.getRight().invoke(method.getLeft(), new TranslationRequest());
+            }
+
+            mockApiUtils.verify(ApiUtils::logGoogleTranslate);
+            mockApiUtils.verify(ApiUtils::logMicrosoftTranslate);
+
+        }
+    }
+
+    @AllArgsConstructor
+    @Getter
+    private static class Pair<L, R> {
+        private L left;
+        private R right;
+
+        public static <L, R> Pair<L, R> of(L left, R right) {
+            return new Pair<>(left, right);
+        }
+    }
+}
+
+package com.assignment.question;
+
+public class Main {
+    public static void main(String[] args) {
+        TranslationManager manager = new TranslationManager(); // ✅ Should work now
+
+        // Test Google Translate
+        System.out.println(manager.translate("Hello", "en", "hi", "google"));
+        manager.printSupportedLanguages("google");
+
+        // Test Microsoft Translate
+        System.out.println(manager.translate("Hello", "en", "hi", "microsoft"));
+        manager.printSupportedLanguages("microsoft");
+    }
+}
+
+
+Problem Statement
+Find the longest increasing subsequence of a given array of integers, A.
+
+In other words, find a subsequence of the array in which the subsequence's elements are in strictly increasing order and in which the subsequence is as long as possible.
+
+In this case, return the length of the longest increasing subsequence.
+
+Constraints
+The length of the array 
+A
+A is between 1 and 2500.
+Each element in 
+A
+A is between 0 and 2500.
+Input Format
+The first and only argument is an integer array A.
+
+Output Format
+Return an integer representing the length of the longest increasing subsequence.
+
+Example Input
+Input 1:
+A = [1, 2, 1, 5]
+Input 2:
+A = [0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15]
+Example Output
+Output 1:
+3
+Output 2:
+6
+Example Explanation
+Explanation for Input 1:
+The longest increasing subsequence: [1, 2, 5]
+
+Explanation for Input 2:
+The possible longest increasing subsequences:
+
+[0, 2, 6, 9, 13, 15]
+[0, 4, 6, 9, 11, 15]
+[0, 4, 6, 9, 13, 15]
+
+-------------
+Problem Statement
+Given a cost matrix cost[][] and a position (m, n) in cost[][], write a function that returns the minimum cost to reach (m, n) from (0, 0). Each cell of the matrix represents a cost to traverse through that cell. The total cost of a path to reach (m, n) is the sum of all the costs on that path (including both the source and destination). You can only move either down, right, or diagonally lower-right from a cell.
+
+Constraints
+1 ≤ rows, columns ≤ 1000
+0 ≤ cost[i][j] ≤ 10^6
+Input Format
+The first argument is a 2D array cost[][] representing the cost matrix.
+The second and third arguments are integers m and n, representing the destination position.
+Output Format
+Return the minimum cost to reach (m, n) from (0, 0).
+Example Input 1
+cost = [[1, 2, 3], [4, 8, 2], [1, 5, 3]], m = 2, n = 2
+Example Output 1
+8
+Explanation 1
+The path with the minimum cost is 1→2→3→2→3 or 1→2→2→3, both having a cost of 8.
+
+-----------
+Problem Statement
+Given a rod of length n inches and an array of prices that contains prices of all pieces of size smaller than n, determine the maximum value obtainable by cutting up the rod and selling the pieces.
+
+Constraints
+1 ≤ n ≤ 1000
+1 ≤ price of each piece ≤ 10^4
+Input Format
+The first argument is an integer n (rod length).
+The second argument is an integer array prices[] representing the prices of each piece of rod length.
+Output Format
+Return the maximum value obtainable as an integer.
+Example Input 1
+n = 8
+prices = [1, 5, 8, 9, 10, 17, 17, 20]
+Example Output 1
+22
+Explanation 1
+The rod can be cut into two pieces of lengths 2 and 6 to get the maximum total price of 22 (5 + 17).
+
+
+-----------------
+
+Problem Statement
+Given a rod of length n inches and an array of prices that contains prices of all pieces of size smaller than n, determine the maximum value obtainable by cutting up the rod and selling the pieces.
+
+Constraints
+1 ≤ n ≤ 1000
+1 ≤ price of each piece ≤ 10^4
+Input Format
+The first argument is an integer n (rod length).
+The second argument is an integer array prices[] representing the prices of each piece of rod length.
+Output Format
+Return the maximum value obtainable as an integer.
+Example Input 1
+n = 8
+prices = [1, 5, 8, 9, 10, 17, 17, 20]
+Example Output 1
+22
+Explanation 1
+The rod can be cut into two pieces of lengths 2 and 6 to get the maximum total price of 22 (5 + 17).
+---------------------
+Problem Statement
+You are given a parentheses string s containing only the characters '(' and ')'. Your task is to make the string balanced by inserting the minimum number of parentheses '(' and/or ')'.
+
+A parentheses string is considered balanced if:
+
+Any left parenthesis '(' must have two consecutive right parentheses "))".
+A left parenthesis '(' must appear before the corresponding "))".
+In other words, each '(' requires two ')' to be properly closed.
+
+Return the minimum number of insertions needed to make the string balanced.
+
+Constraints
+1 ≤ s.length ≤ 10⁵
+s consists of '(' and ')' only.
+Input Format
+A string s containing only '(' and ')' characters.
+
+Output Format
+Return an integer representing the minimum number of insertions needed to balance the string.
+
+Example Input
+Input 1:
+s = "(()))"
+Input 2:
+s = "()))"
+Input 3:
+s = "))())("
+Example Output
+Output 1:
+1
+Output 2:
+0
+Output 3:
+3
+Example Explanation
+Explanation for Input 1:
+The string needs one more ')' at the end to be balanced.
+
+Explanation for Input 2:
+The string is already balanced.
+
+Explanation for Input 3:
+Add '(' at the beginning to match the first "))".
+Add "))" at the end to match the last '('.
+
+
+
+---------------
+
+Problem Statement
+Find the longest increasing subsequence of a given array of integers, A.
+
+In other words, find a subsequence of the array in which the subsequence's elements are in strictly increasing order and in which the subsequence is as long as possible.
+
+In this case, return the length of the longest increasing subsequence.
+
+Constraints
+The length of the array 
+A
+A is between 1 and 2500.
+Each element in 
+A
+A is between 0 and 2500.
+Input Format
+The first and only argument is an integer array A.
+
+Output Format
+Return an integer representing the length of the longest increasing subsequence.
+
+Example Input
+Input 1:
+A = [1, 2, 1, 5]
+Input 2:
+A = [0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15]
+Example Output
+Output 1:
+3
+Output 2:
+6
+Example Explanation
+Explanation for Input 1:
+The longest increasing subsequence: [1, 2, 5]
+
+Explanation for Input 2:
+The possible longest increasing subsequences:
+
+[0, 2, 6, 9, 13, 15]
+[0, 4, 6, 9, 11, 15]
+[0, 4, 6, 9, 13, 15]
