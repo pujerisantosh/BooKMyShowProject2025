@@ -1,13 +1,10 @@
-package models;
+package com.scaler.bookmyshowproject2025.models;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.security.PrivateKey;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -18,36 +15,17 @@ public class Booking extends BaseModel {
 
     @ManyToOne
     private User user;
-
+    // if a booking is cancelled , then the same showSeat might be booked by someone else
+    // ManyToMany
     @OneToMany
     private List<ShowSeat> showSeats;
-
     private Date bookingDate;
-
     @OneToMany
     private List<Payment> payments;
-
     @ManyToOne
     private Show show;
-
     @Enumerated(value = EnumType.STRING)
     private BookingStatus bookingStatus;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<ShowSeat> getShowSeats() {
-        return showSeats;
-    }
-
-    public void setShowSeats(List<ShowSeat> showSeats) {
-        this.showSeats = showSeats;
-    }
 
     public Date getBookingDate() {
         return bookingDate;
@@ -55,6 +33,14 @@ public class Booking extends BaseModel {
 
     public void setBookingDate(Date bookingDate) {
         this.bookingDate = bookingDate;
+    }
+
+    public BookingStatus getBookingStatus() {
+        return bookingStatus;
+    }
+
+    public void setBookingStatus(BookingStatus bookingStatus) {
+        this.bookingStatus = bookingStatus;
     }
 
     public List<Payment> getPayments() {
@@ -73,11 +59,19 @@ public class Booking extends BaseModel {
         this.show = show;
     }
 
-    public BookingStatus getBookingStatus() {
-        return bookingStatus;
+    public List<ShowSeat> getShowSeats() {
+        return showSeats;
     }
 
-    public void setBookingStatus(BookingStatus bookingStatus) {
-        this.bookingStatus = bookingStatus;
+    public void setShowSeats(List<ShowSeat> showSeats) {
+        this.showSeats = showSeats;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

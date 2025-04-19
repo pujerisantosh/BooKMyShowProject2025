@@ -1,4 +1,4 @@
-package models;
+package com.scaler.bookmyshowproject2025.models;
 
 import jakarta.persistence.Entity;
 import lombok.Getter;
@@ -8,29 +8,19 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Movie extends BaseModel{
-
     private String title;
-    private String year;
+    private int year;
     private String director;
     private String genre;
     private int rating;
     private String description;
 
-
-    public String getTitle() {
-        return title;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getDirector() {
@@ -49,19 +39,27 @@ public class Movie extends BaseModel{
         this.genre = genre;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public int getRating() {
         return rating;
     }
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 }

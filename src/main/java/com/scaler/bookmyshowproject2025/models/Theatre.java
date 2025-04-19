@@ -1,4 +1,4 @@
-package models;
+package com.scaler.bookmyshowproject2025.models;
 
 
 import jakarta.persistence.Entity;
@@ -21,33 +21,16 @@ public class Theatre extends BaseModel {
     @ManyToOne
     private Region region;
 
-
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
     }
 
-    public List<Screen> getScreens() {
-        return screens;
-    }
-
     public void setScreens(List<Screen> screens) {
         this.screens = screens;
-    }
-
-    public Region getRegion() {
-        return region;
     }
 
     public void setRegion(Region region) {

@@ -1,4 +1,4 @@
-package models;
+package com.scaler.bookmyshowproject2025.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -13,7 +13,6 @@ public class Seat extends BaseModel{
     private String seatName;
     private int rowVal;
     private int columnVal;
-
     @ManyToOne
     private SeatType seatType;
 

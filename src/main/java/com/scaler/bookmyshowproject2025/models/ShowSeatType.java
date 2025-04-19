@@ -1,4 +1,4 @@
-package models;
+package com.scaler.bookmyshowproject2025.models;
 
 
 import jakarta.persistence.Entity;
@@ -16,7 +16,6 @@ public class ShowSeatType extends BaseModel{
     @ManyToOne
     private SeatType seatType;
     private int price;
-
     public int getPrice() {
         return price;
     }

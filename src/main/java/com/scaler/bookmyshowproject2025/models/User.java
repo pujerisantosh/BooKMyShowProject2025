@@ -1,4 +1,4 @@
-package models;
+package com.scaler.bookmyshowproject2025.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -14,9 +14,8 @@ public class User extends BaseModel {
     private String name;
     private String email;
     private String password;
-
     @OneToMany
-   private  List<Booking> bookings;
+    private List<Booking> bookings;
 
     public String getName() {
         return name;

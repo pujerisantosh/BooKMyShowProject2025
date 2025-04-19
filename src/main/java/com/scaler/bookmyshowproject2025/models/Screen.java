@@ -1,4 +1,4 @@
-package models;
+package com.scaler.bookmyshowproject2025.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
