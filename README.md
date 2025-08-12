@@ -1,149 +1,107 @@
-📽️ BooKMyShowProject2025
+🎬 BookMyShow Project 2025
+📌 Overview
+This project is a Low-Level Design (LLD) and Implementation of a Movie Ticket Booking System similar to BookMyShow.
+It supports movie catalog browsing, theatre and screen management, seat booking, payments, cancellations, and dynamic pricing — designed for scalability and concurrency.
 
+🚀 Features
+User Management (Registration, Login, Profile Management)
 
-A backend movie-ticket booking platform (Low-Level Design) built with Java + Spring Boot
+Movie Catalog (Search by movie, theatre, or location)
 
+Theatre & Screen Management
 
+Seat Booking System (Locking, Payment, Confirmation)
 
+Dynamic Pricing (Time-based and seat-type pricing)
 
+Cancellation & Refund
 
+Bulk Booking Support
 
-🌟 Overview
-This project is a low-level design and implementation of a movie-ticket booking system similar to BookMyShow. It focuses on:
+Facilities Information for theatres (e.g., parking, food, accessibility)
 
-Clear backend architecture
+🛠 Tech Stack
+Layer	Technology Used
+Language	Java 17
+Framework	Spring Boot
+Database	MySQL / In-Memory H2 (for testing)
+API Testing	Rest Assured
+Build Tool	Maven
+Version Control	Git, GitHub
+CI/CD	Bitbucket Pipelines / Jenkins
+Cloud	AWS (Lambda, EC2, RDS)
 
-Efficient data modeling
-
-Robust API design
-
-Real-world booking flow & concurrency challenges
-
-🚀 Tech Stack
-Java 17+ — Core language
-
-Spring Boot 3.x — REST API development
-
-Maven — Build & dependency management
-
-MySQL (or H2 in-memory) — Persistent storage
-
-JPA/Hibernate — ORM for DB operations
-
-Postman / RestAssured — API testing
-
-JUnit + Mockito (Planned) — Automated unit testing
-
-Docker (Future) — Deployment packaging
-
-🧩 Features
-User Authentication — Secure signup/login
-
-Browse Movies & Theatres — Filter by movie or location
-
-Show & Screen Management — Admin feature to schedule shows
-
-Seat Selection & Booking — User can lock & confirm seats
-
-Simulated Payment Gateway — Fake payment integration for bookings
-
-Booking History — Retrieve past bookings
-
-Concurrency Handling (In Progress) — Prevent double booking
-
-⚙️ Architecture
-Layered Approach:
-
-nginx
-Copy
-Edit
-Controller → Service → Repository → Database
-Controller — REST endpoints
-
-Service — Business logic
-
-Repository — DB access using JPA
-
-Entity — Database model
-
-Exception — Custom error handling
-
-🗃️ Database Design
-Key Tables:
-
-User — User details
-
-Movie — Movie information
-
-Theatre — Theatres & locations
-
-Screen — Screens in each theatre
-
-Show — Movie timings & screen assignments
-
-Seat — Seat layout
-
-Booking — User bookings
-
-Payment — Transaction records
-
-Relationships:
-
-One Theatre → Many Screens
-
-One Screen → Many Shows
-
-One Show → Many Seats
-
-One User → Many Bookings
-
-(ER Diagram — To be added)
-
-📜 Booking Flow
-User logs in
-
-Selects a movie & theatre
-
-Picks a show time & seats
-
-Seat lock applied (to prevent race conditions)
-
-Simulated payment processed
-
-Booking confirmed & stored in DB
-
-🧪 Testing
-Postman Collection — Manual API testing
-
-RestAssured Scripts (Planned) — Automated API verification
-
-JUnit/Mockito (Planned) — Unit & integration tests
-
-🛠️ How to Run Locally
+📂 Project Structure
 bash
 Copy
 Edit
-# Clone repository
+BooKMyShowProject2025/
+│── src/
+│   ├── main/
+│   │   ├── java/com/bookmyshow/
+│   │   │   ├── controller/
+│   │   │   ├── service/
+│   │   │   ├── repository/
+│   │   │   ├── model/
+│   │   │   └── exceptions/
+│   └── test/
+│       ├── java/com/bookmyshow/
+│       │   ├── apitests/
+│       │   └── unittest/
+│
+│── pom.xml
+│── README.md
+📜 API Endpoints (Sample)
+Method	Endpoint	Description
+GET	/movies	Fetch all movies
+GET	/movies/{id}	Get movie details
+POST	/bookings	Create a booking
+DELETE	/bookings/{id}	Cancel a booking
+GET	/theatres/{id}/shows	Get shows for a theatre
+
+🔗 How to Run Locally
+bash
+Copy
+Edit
+# Clone repo
 git clone https://github.com/pujerisantosh/BooKMyShowProject2025.git
+
+# Navigate to project
 cd BooKMyShowProject2025
 
-# Build & run
-./mvnw spring-boot:run
-App runs on http://localhost:8080
+# Build project
+mvn clean install
 
-📦 Future Improvements
-✅ Implement Redis-based distributed seat locking
+# Run application
+mvn spring-boot:run
+App will be available at: http://localhost:8080
 
-✅ Add Dockerfile & Docker Compose setup
+✅ Testing
+bash
+Copy
+Edit
+# Run all tests
+mvn test
+Includes:
 
-✅ Deploy to AWS ECS/Elastic Beanstalk
+Unit Tests (JUnit)
 
-✅ Add caching for movie listings
+API Tests (Rest Assured)
 
-✅ Integrate with email/SMS notifications
+Integration Tests
 
-📌 Author
-Santosh Kumar Pujeri
-📧 Email: your-email@example.com
-💼 LinkedIn: linkedin.com/in/pujerisantosh
-📂 GitHub: github.com/pujerisantosh
+📈 Future Enhancements
+Multi-currency & multilingual support
+
+Gift cards & wallet integration
+
+AI-powered movie recommendations
+
+Cross-platform mobile app
+
+👨‍💻 Author
+Santosh Pujeri
+Senior QA Automation Engineer | AWS Certified Solutions Architect – Associate
+
+📧 Email: santoshpujeri@example.com
+🔗 LinkedIn: linkedin.com/in/santoshpujeri
