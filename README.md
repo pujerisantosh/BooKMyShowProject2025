@@ -1,149 +1,70 @@
-📽️  BooKMyShowProject2025
+📽️ BooKMyShowProject2025
+This project is a low-level design and implementation of a movie ticket booking platform, conceptually similar to BookMyShow. It provides core functionalities for user management, movie and show administration, theatre setup, streamlined seat booking, and a simulated payment process.
 
-
-A backend movie-ticket booking platform (Low-Level Design) built with Java + Spring Boot
-
-
-
-
-
-
-🌟 Overview
-This project is a low-level design and implementation of a movie-ticket booking system similar to BookMyShow. It focuses on:
-
-Clear backend architecture
-
-Efficient data modeling
-
-Robust API design
-
-Real-world booking flow & concurrency challenges
+🌟 Project Overview
+BooKMyShowProject2025 aims to demonstrate a robust backend system for a movie ticketing application, focusing on clear architectural design and efficient data handling.
 
 🚀 Tech Stack
-Java 17+ — Core language
+The project is built using modern Java ecosystem technologies:
 
-Spring Boot 3.x — REST API development
-
-Maven — Build & dependency management
-
-MySQL (or H2 in-memory) — Persistent storage
-
-JPA/Hibernate — ORM for DB operations
-
-Postman / RestAssured — API testing
-
-JUnit + Mockito (Planned) — Automated unit testing
-
-Docker (Future) — Deployment packaging
-
+Java 17+: The core programming language.
+Spring Boot: For rapid application development and simplified configuration.
+Maven: Dependency management and build automation.
+MySQL (or H2 for in-memory): Relational database for persistent storage.
+JPA/Hibernate: For Object-Relational Mapping (ORM) to interact with the database.
+Postman/RestAssured: Tools for testing the REST APIs.
 🧩 Features
-User Authentication — Secure signup/login
+The application supports the following key functionalities:
 
-Browse Movies & Theatres — Filter by movie or location
+✅ User Registration/Login: Secure user authentication and authorization.
+🎬 Browse Movies & Theatres: Users can view available movies and the theatres where they are playing.
+🕒 Show Management (Timing, Screens): Admins can manage show timings and assign them to specific screens within a theatre.
+💺 Seat Selection & Booking: Users can select desired seats and proceed with the booking.
+💳 Payment Simulation: A simulated payment gateway for completing transactions.
+📜 Booking History: Users can view their past booking details.
+⚙️ Modules (Project Structure in src/main/java)
+The project follows a standard layered architecture for clear separation of concerns:
 
-Show & Screen Management — Admin feature to schedule shows
-
-Seat Selection & Booking — User can lock & confirm seats
-
-Simulated Payment Gateway — Fake payment integration for bookings
-
-Booking History — Retrieve past bookings
-
-Concurrency Handling (In Progress) — Prevent double booking
-
-⚙️ Architecture
-Layered Approach:
-
-nginx
-Copy
-Edit
-Controller → Service → Repository → Database
-Controller — REST endpoints
-
-Service — Business logic
-
-Repository — DB access using JPA
-
-Entity — Database model
-
-Exception — Custom error handling
-
+controller/ – Houses the REST API endpoints, handling incoming HTTP requests and returning responses.
+service/ – Contains the core business logic and orchestrates operations between controllers and repositories.
+model/entity/ – Defines the database entities and their relationships.
+repository/ – Spring Data JPA interfaces for data access and persistence operations.
+exception/ – Custom exception classes for structured error handling.
 🗃️ Database Design
-Key Tables:
+The relational database schema is designed to efficiently manage all aspects of the booking system:
 
-User — User details
+Tables:
 
-Movie — Movie information
-
-Theatre — Theatres & locations
-
-Screen — Screens in each theatre
-
-Show — Movie timings & screen assignments
-
-Seat — Seat layout
-
-Booking — User bookings
-
-Payment — Transaction records
-
-Relationships:
+User: Stores user details.
+Movie: Stores movie information.
+Theatre: Stores theatre details.
+Screen: Represents individual screens within a theatre.
+Show: Details about a specific movie showing at a particular screen and time.
+Seat: Individual seats within a screen.
+Booking: Records of user bookings.
+Payment: Payment transaction details.
+Key Relationships:
 
 One Theatre → Many Screens
-
 One Screen → Many Shows
-
-One Show → Many Seats
-
+One Show → Many Seats (Represents available/bookable seats for a specific show)
 One User → Many Bookings
-
-(ER Diagram — To be added)
-
-📜 Booking Flow
-User logs in
-
-Selects a movie & theatre
-
-Picks a show time & seats
-
-Seat lock applied (to prevent race conditions)
-
-Simulated payment processed
-
-Booking confirmed & stored in DB
+⚠️ Booking Concurrency (In Progress)
+A critical aspect of a booking system is handling concurrent requests. A seat locking mechanism is planned and currently under development to prevent multiple users from simultaneously attempting to book the same seat, ensuring data integrity and a smooth user experience.
 
 🧪 Testing
-Postman Collection — Manual API testing
+The API endpoints have been thoroughly tested to ensure correct functionality:
 
-RestAssured Scripts (Planned) — Automated API verification
+✅ APIs tested using Postman: Manual testing of REST endpoints.
+🧪 Unit tests in src/test (TBD): Planned for comprehensive code coverage and reliability.
+🛠️ Run Locally
+To get the BooKMyShowProject2025 up and running on your local machine:
 
-JUnit/Mockito (Planned) — Unit & integration tests
+Clone the Repository:
 
-🛠️ How to Run Locally
-bash
-Copy
-Edit
-# Clone repository
-git clone https://github.com/pujerisantosh/BooKMyShowProject2025.git
+git clone [https://github.com/pujerisantosh/BooKMyShowProject2025.git](https://github.com/pujerisantosh/BooKMyShowProject2025.git)
 cd BooKMyShowProject2025
+Run the Application: This command uses Maven Wrapper to build and run the Spring Boot application.
 
-# Build & run
 ./mvnw spring-boot:run
-App runs on http://localhost:8080
-
-📦 Future Improvements
-✅ Implement Redis-based distributed seat locking
-
-✅ Add Dockerfile & Docker Compose setup
-
-✅ Deploy to AWS ECS/Elastic Beanstalk
-
-✅ Add caching for movie listings
-
-✅ Integrate with email/SMS notifications
-
-📌 Author
-Santosh Kumar Pujeri
-📧 Email: your-email@example.com
-💼 LinkedIn: linkedin.com/in/pujerisantosh
-📂 GitHub: github.com/pujerisantosh
+The application should start on its default port (usually 8080). You can then use Postman or any API client to interact with the endpoints.
